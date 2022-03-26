@@ -1,0 +1,19 @@
+{
+  "name": "excell_course",
+  "version": "1.0.0",
+  "description": "JS_programm",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andruxgit/minin_2.git"
+  },
+  "author": "Andru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andruxgit/minin_2/issues"
+  },
+  "homepage": "https://github.com/andruxgit/minin_2#readme"
+}
