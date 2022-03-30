@@ -1,34 +1,48 @@
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const isProd = process.env.NODE_ENV == 'production';
+const isProd = process.env.NODE_ENV === 'production'
 const isDev = !isProd;
-const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`;
+const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
+const jsLoader = () => {
+  const loaders = [
+    {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env', {targets: 'defaults'}],
+      },
+    },
+  ]
+  if (isDev) {
+    loaders.push('eslint-loader')
+  }
+  return loaders
+}
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: ['@babel/polyfill','./index.js'],
+  entry: ['@babel/polyfill', './index.js'],
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 3000,
-    hot: isDev
+    hot: isDev,
   },
   resolve: {
     extensions: ['.js'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@core':path.resolve(__dirname, 'src/core'),
-    }
+      '@core': path.resolve(__dirname, 'src/core'),
+    },
   },
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
-  plugins:[
+  plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
@@ -39,14 +53,14 @@ module.exports = {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: 'index.html',
       minify: {
         removeComments: isProd,
-        collapseWhitespace: isProd
-      }
+        collapseWhitespace: isProd,
+      },
     }),
     new MiniCssExtractPlugin({
-      filename: filename('css')
+      filename: filename('css'),
     }),
 
 
@@ -55,7 +69,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -63,23 +77,17 @@ module.exports = {
 
           MiniCssExtractPlugin.loader,
 
-          "css-loader",
+          'css-loader',
 
-          "sass-loader",
+          'sass-loader',
         ],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      }
+        use: jsLoader(),
+
+      },
     ],
   },
 }
