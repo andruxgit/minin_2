@@ -6,7 +6,7 @@
     "node": true
   },
   "rules": {
-    "semi": "off",
+    "semi": 0,
     "linebreak-style": "off",
     "arrow-parens": "off",
     "comma-dangle": "off",
