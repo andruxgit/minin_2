@@ -21,12 +21,12 @@
     font-size: 18px;
     line-height: 22px;
     outline: none;
-    &:focus{
-     border: 1px solid $focus-color;
-    }
     &:hover{
      border: 1px solid $hover-color;
 
+    }
+    &:focus{
+     border: 1px solid $focus-color;
     }
 
   }
@@ -37,6 +37,6 @@
     align-items: center;
   }
   .button{
-
+    @include button(red);
   }
 }
