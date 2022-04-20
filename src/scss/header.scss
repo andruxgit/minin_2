@@ -7,12 +7,14 @@
   right: 0;
   left: 0;
   height: $header-height;
-  padding: 8px 10px 0;
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
-  background-color: antiquewhite ;
+  align-items: center;
+  background-color: #fff ;
   .input{
     margin: 0;
+    background: #f7efef;
     padding: 2px 7px;
     color: #000;
     border: 1px solid transparent;
