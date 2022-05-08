@@ -1,8 +1,7 @@
 class Dom {
   constructor(selector) {
-    // #app
-    this.$el = typeof selector === 'string'
-      ? document.querySelector(selector) : selector
+    this.$el = typeof selector === 'string' ?
+      document.querySelector(selector) : selector
   }
 
   html(html) {
@@ -19,13 +18,13 @@ class Dom {
   }
 
   append(node) {
-    if (node instanceof Dom){
+    if (node instanceof Dom) {
       node = node.$el
     }
     if (Element.prototype.append) {
-      this.$el.append(node.$el)
+      this.$el.append(node)
     } else {
-      this.$el.appendChild(node.$el)
+      this.$el.appendChild(node)
     }
     return this
   }
