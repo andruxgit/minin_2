@@ -4,7 +4,6 @@ export class Table extends ExcelComponent {
   static className = 'excel__table'
   toHTML() {
     return `
-<!--    <div class="excel__table">-->
             <div class="row">
                 <div class="row-info"></div>
                 <div class="row-data">
@@ -29,7 +28,6 @@ export class Table extends ExcelComponent {
                     <div class="cell" contenteditable >C2</div>
                 </div>
             </div>
-<!--        </div>-->
     `;
   }
 }

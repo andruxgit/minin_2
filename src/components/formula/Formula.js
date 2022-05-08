@@ -5,10 +5,8 @@ export class Formula extends ExcelComponent {
 
   toHTML() {
     return `
-<!--    <div class="excel__formula">-->
             <div class="info">fx </div>
             <div class="input" contenteditable="true" spellcheck="false"></div>
-<!--     </div>-->
 `;
   }
 }
