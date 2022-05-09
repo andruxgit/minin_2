@@ -1,8 +1,18 @@
 export class DomListener {
-  constructor($root) {
+  constructor($root, listeners = []) {
     if (!$root) {
       throw new Error(`No $root provide for DomListener!`)
     }
     this.$root = $root
+    this.listeners = listeners
+  }
+
+  initDomListeners() {
+    console.log(this.listeners)
+  }
+
+  removeDomListeners() {
+
   }
 }
+
