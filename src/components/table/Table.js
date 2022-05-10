@@ -2,6 +2,14 @@ import {ExcelComponent} from '@core/ExcelComponent';
 
 export class Table extends ExcelComponent {
   static className = 'excel__table'
+
+  constructor($root) {
+    super($root, {
+      name: 'Table',
+      listeners: ['cell']
+    });
+  }
+
   toHTML() {
     return `
                 <div class="row">
@@ -29,5 +37,9 @@ export class Table extends ExcelComponent {
                 </div>
             </div>
     `;
+  }
+
+  onCell() {
+    console.log('onCell')
   }
 }
